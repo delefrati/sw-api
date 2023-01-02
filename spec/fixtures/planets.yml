@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: Tatooine
   climate: arid
   terrain: desert
 
 two:
+  id: 2
   name: Naboo
   climate: temperate
   terrain: grassy hills, swamps, forests, mountains
