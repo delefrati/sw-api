@@ -12,7 +12,7 @@ class PlanetsController < ApplicationController
 
     def destroy
         Planet.destroy(params[:id])
-        Rails.logger.debug "Planet removed: ID = #{@planet.id}"
+        Rails.logger.debug "Planet removed: ID = #{params[:id]} "
         render json: {"message": "Removed"}
     rescue StandardError => e
         Rails.logger.error "User tried to remove the planet #{params[:id]} but it yeld an error: #{e.inspect}"

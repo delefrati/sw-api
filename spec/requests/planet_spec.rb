@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Planets", type: :request do
-  fixtures :planets
   describe "GET /planets" do
+    fixtures :planets
     it 'gets a list of all planets' do
       headers = { "ACCEPT" => "application/json" }
       get "/planets", :headers => headers
@@ -46,6 +46,9 @@ RSpec.describe "Planets", type: :request do
       expect(planets.count).to eq 2
       expect(planets[0].count).to eq 7
     end
+  end
+  describe "DELETE /planets" do
+    fixtures :planets
     it 'deletes one planet' do
       expect(Planet.all.count).to eq 2
       headers = { "ACCEPT" => "application/json" }

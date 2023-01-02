@@ -1,24 +1,35 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Esta é a documentação da API. Para facilitar a execução, a API foi _dockerizada_, ou seja, foi colocada de um Docker. 
 
-Things you may want to cover:
+## Rodando via Docker Compose
 
-* Ruby version
+### Executando via docker
 
-* System dependencies
+Instale o [Docker Compose](https://docs.docker.com/compose/) e execute o comando:
+```docker compose up```
 
-* Configuration
+Aguarde baixar e instalar todas as dependências, o serviço estará disponível na porta 3000 do localhost.
 
-* Database creation
+### Resetando o banco de dados
 
-* Database initialization
+```docker exec -t sw-api-web-1 rake db:drop db:create db:migrate && rake db:seed```
 
-* How to run the test suite
+## Rodando os testes
 
-* Services (job queues, cache servers, search engines, etc.)
+```docker exec -t sw-api-web-1 rspec spec```
 
-* Deployment instructions
+A cobertura dos testes será gerada na pasta `/coverage`
 
-* ...
+## Rotas da API
+
+* GET para http://localhost:3000/planets - retorna um JSON com todos os planetas
+
+* GET para http://localhost:3000/planets/1 - retorna o planeta com id 1
+
+* GET para http://localhost:3000/planets/?search=texto - retorna planetas que tenham _texto_ no nome
+
+* DELETE para http://localhost:3000/planets/1 - remove o planeta com id 1
+
+
+
